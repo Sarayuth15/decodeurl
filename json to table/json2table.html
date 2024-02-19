@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <title>json covert</title>
+</head>
+
+<body>
+    <!-- menu -->
+    <nav class="navbar navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">
+                <img src="../img/KOSIGN-LOGO.png" alt="" width="40" height="35">
+            </a>
+            <a class="navbar-brand" href="">Json 2 table</a>
+        </div>
+    </nav>
+    <!-- //menu -->
+
+    <!-- body -->
+    <div class="container">
+        <div class="row mt-2">
+            <div class="col-6">
+                <p><span id="">json :</span></p>
+                <div class="form-floating" id="jsonInput">
+                    <textarea class="form-control" placeholder="" id="jsonData"
+                        style="height: 400px; width: 500px;"></textarea>
+                    <label for="Paste your JSON here">Enter URL</label>
+                </div>
+                <button type="button" class="btn btn-outline-primary mt-2" id="" onclick="convertJsonToTable()">Covert</button>
+
+            </div>
+            <div class="col-6">
+                <p> <span id=""></span></p>
+                <div id="tableOutput"></div>
+            </div>
+        </div>
+    </div>
+    <!-- //body -->
+
+    <!-- script -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        function convertJsonToTable() {
+            var jsonData = $("#jsonData").val();
+            try {
+                // Parse the JSON data
+                var data = JSON.parse(jsonData);
+
+                // Generate the HTML table
+                var tableHtml = '<table class="table table-bordered border-primary">';
+
+                // Create header row
+                tableHtml += '<tr>';
+                for (var key in data[0]) {
+                    tableHtml += '<th>' + key + '</th>';
+                }
+                tableHtml += '</tr>';
+
+                // Create data rows
+                for (var i = 0; i < data.length; i++) {
+                    tableHtml += '<tr>';
+                    for (var key in data[i]) {
+                        tableHtml += '<td>' + data[i][key] + '</td>';
+                    }
+                    tableHtml += '</tr>';
+                }
+
+                tableHtml += '</table>';
+
+                // Display the table in the output div
+                document.getElementById('tableOutput').innerHTML = tableHtml;
+
+            } catch (error) {
+                console.error('Error parsing JSON:', error);
+                alert('Invalid JSON. Please enter a valid JSON data.');
+            }
+        }
+    </script>
+</body>
+
+</html>

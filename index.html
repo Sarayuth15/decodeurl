@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <title>decode encode</title>
+</head>
+<body>
+    <!-- menu -->
+    <nav class="navbar navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="img/KOSIGN-LOGO.png" alt="" width="40" height="35">
+            </a>
+            <a class="navbar-brand" href="json to table/json2table.html">Json 2 table</a>
+        </div>
+    </nav>
+    <!-- //menu -->
+
+    <!-- body -->
+    <div class="container">
+        <div class="row mt-2">
+            <div class="col-6">
+                <p><span id="">Decode :</span></p>
+                <div class="form-floating">
+                    <textarea class="form-control" placeholder="" id="urlInput" style="height: 400px; width: 500px;"></textarea>
+                    <label for="Enter URL">Enter URL</label>
+                </div>
+                <!-- <button id="decodeButton">Decode</button> -->
+                <button type="button" class="btn btn-outline-primary mt-2" id="decodeButton">Decode</button>
+                
+            </div>
+            <div class="col-6">
+                <p>Encode : <span id=""></span></p>
+                <div class="form-floating">
+                    <textarea class="form-control" placeholder="Leave a comment here" id="decodedUrl" style="height: 400px; width: 500px;"></textarea>
+                    <label for="floatingTextarea2"></label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //body -->
+
+
+    <!-- script -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="js/index.js"></script>
+</body>
+</html>

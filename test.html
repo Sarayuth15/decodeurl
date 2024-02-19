@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON to Table</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+
+<div id="jsonInput">
+    <textarea rows="10" cols="50" placeholder="Paste your JSON here" id="jsonData"></textarea>
+    <button onclick="convertJsonToTable()">Convert</button>
+</div>
+
+<div id="tableOutput"></div>
+
+<script>
+    function convertJsonToTable() {
+        // Get the JSON input from the textarea
+        var jsonData = document.getElementById('jsonData').value;
+
+        try {
+            // Parse the JSON data
+            var data = JSON.parse(jsonData);
+
+            // Generate the HTML table
+            var tableHtml = '<table>';
+            
+            // Create header row
+            tableHtml += '<tr>';
+            for (var key in data[0]) {
+                tableHtml += '<th>' + key + '</th>';
+            }
+            tableHtml += '</tr>';
+
+            // Create data rows
+            for (var i = 0; i < data.length; i++) {
+                tableHtml += '<tr>';
+                for (var key in data[i]) {
+                    tableHtml += '<td>' + data[i][key] + '</td>';
+                }
+                tableHtml += '</tr>';
+            }
+
+            tableHtml += '</table>';
+
+            // Display the table in the output div
+            document.getElementById('tableOutput').innerHTML = tableHtml;
+
+        } catch (error) {
+            console.error('Error parsing JSON:', error);
+            alert('Invalid JSON. Please enter a valid JSON data.');
+        }
+    }
+</script>
+
+</body>
+</html>
